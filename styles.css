@@ -1176,13 +1176,140 @@ footer {
 .footer-links { display: flex; gap: 17px; }
 .footer-links a { color: #77929c; font-size: 9px; letter-spacing: 1px; transition: color .2s; }
 .footer-links a:hover { color: var(--cyan); }
+.crisp-launcher {
+  position: fixed;
+  z-index: 20;
+  right: 22px;
+  bottom: 22px;
+  min-width: 122px;
+  min-height: 46px;
+  border: 1px solid rgba(255,211,89,.66);
+  color: #ffe483;
+  background: linear-gradient(100deg, rgba(255,190,44,.24), rgba(37,217,248,.14));
+  box-shadow:
+    0 0 18px rgba(255,191,48,.25),
+    0 0 34px rgba(37,217,248,.12);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  font: 700 11px var(--font-body);
+  letter-spacing: 1.2px;
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease, background .25s ease;
+}
+.crisp-launcher:hover,
+.crisp-launcher:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(255,229,124,.96);
+  background: linear-gradient(100deg, rgba(255,190,44,.34), rgba(37,217,248,.2));
+  box-shadow:
+    0 0 22px rgba(255,191,48,.36),
+    0 0 38px rgba(37,217,248,.2);
+  outline: none;
+}
+.crisp-launcher.is-hidden { display: none; }
+.crisp-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  padding: 22px;
+  background: rgba(0,0,0,.66);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease;
+}
+.crisp-gate.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.crisp-gate-panel {
+  position: relative;
+  width: min(390px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  padding: 28px;
+  border: 1px solid rgba(255,211,89,.44);
+  color: var(--text);
+  background:
+    radial-gradient(circle at 80% 18%, rgba(37,217,248,.12), transparent 38%),
+    linear-gradient(145deg, rgba(13,28,40,.97), rgba(5,13,20,.98));
+  box-shadow:
+    0 0 26px rgba(255,191,48,.16),
+    0 20px 60px rgba(0,0,0,.52);
+}
+.crisp-gate-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  border: 0;
+  color: #ffe483;
+  background: transparent;
+  cursor: pointer;
+  font: 700 28px/1 var(--font-display);
+}
+.crisp-gate-label {
+  color: var(--cyan);
+  font: 700 10px var(--font-body);
+  letter-spacing: 2px;
+}
+.crisp-gate-panel strong {
+  color: #ffe483;
+  font: 700 31px/1 var(--font-display);
+  letter-spacing: .5px;
+}
+.crisp-gate-panel label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  color: #9db5bd;
+  font: 700 10px var(--font-body);
+  letter-spacing: 1px;
+}
+.crisp-gate-panel input {
+  width: 100%;
+  border: 1px solid rgba(37,217,248,.28);
+  color: var(--text);
+  background: rgba(2,13,19,.84);
+  outline: none;
+  padding: 13px 12px;
+  font: 600 14px var(--font-body);
+}
+.crisp-gate-panel input:focus {
+  border-color: rgba(37,217,248,.74);
+  box-shadow: 0 0 16px rgba(37,217,248,.16);
+}
+.crisp-gate-submit {
+  min-height: 44px;
+  margin-top: 4px;
+  border: 1px solid rgba(255,211,89,.66);
+  color: #ffe483;
+  background: rgba(255,190,44,.12);
+  cursor: pointer;
+  font: 700 11px var(--font-body);
+  letter-spacing: 1px;
+}
+.crisp-gate-submit:hover,
+.crisp-gate-submit:focus-visible {
+  border-color: rgba(255,229,124,.96);
+  box-shadow: 0 0 18px rgba(255,191,48,.28);
+  outline: none;
+}
 
 @media (max-width: 800px) {
   .site-header, main, footer { width: min(100% - 28px, 620px); }
   .site-header { height: 70px; }
   main { padding-top: 70px; }
   .brand-logo { width: 150px; height: 54px; }
-  .contact-button { min-height: 34px; padding: 0 10px; font-size: 9px; }
+  .contact-button {
+    min-height: 37px;
+    padding: 0 13px;
+    border-color: rgba(255,211,89,.58);
+    color: #ffe483;
+    background: rgba(255,190,44,.09);
+    box-shadow: 0 0 18px rgba(255,191,48,.12);
+    font-size: 10px;
+  }
   .language-switch { padding: 8px 9px; }
   .language-switch select { max-width: 112px; font-size: 9px; }
   .hero { min-height: 430px; padding-top: 43px; }
@@ -1226,6 +1353,20 @@ footer {
   .proof-card img { height: 150px; }
   .proof-info strong { font-size: 18px; }
   footer { flex-wrap: wrap; padding: 18px 0; gap: 13px; }
+  .crisp-launcher {
+    right: 14px;
+    bottom: 14px;
+    min-width: 122px;
+    min-height: 46px;
+    border-color: rgba(255,211,89,.66);
+    color: #ffe483;
+    background: linear-gradient(100deg, rgba(255,190,44,.24), rgba(37,217,248,.14));
+    box-shadow:
+      0 0 18px rgba(255,191,48,.25),
+      0 0 34px rgba(37,217,248,.12);
+    font-size: 11px;
+  }
+  .crisp-gate-panel { padding: 24px 20px; }
 }
 
 @media (max-width: 450px) {
