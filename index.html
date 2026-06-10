@@ -21,6 +21,112 @@
       d.getElementsByTagName("head")[0].appendChild(s);
     })();
   </script>
+  <style>
+    .crisp-launcher {
+      position: fixed;
+      z-index: 20;
+      right: 22px;
+      bottom: 22px;
+      min-width: 122px;
+      min-height: 46px;
+      border: 1px solid rgba(255,211,89,.66);
+      color: #ffe483;
+      background: linear-gradient(100deg, rgba(255,190,44,.24), rgba(37,217,248,.14));
+      box-shadow: 0 0 18px rgba(255,191,48,.25), 0 0 34px rgba(37,217,248,.12);
+      backdrop-filter: blur(8px);
+      cursor: pointer;
+      font: 700 11px "Space Grotesk", sans-serif;
+      letter-spacing: 1.2px;
+      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease, background .25s ease;
+    }
+    .crisp-launcher:hover,
+    .crisp-launcher:focus-visible {
+      transform: translateY(-2px);
+      border-color: rgba(255,229,124,.96);
+      background: linear-gradient(100deg, rgba(255,190,44,.34), rgba(37,217,248,.2));
+      box-shadow: 0 0 22px rgba(255,191,48,.36), 0 0 38px rgba(37,217,248,.2);
+      outline: none;
+    }
+    .crisp-launcher.is-hidden { display: none; }
+    .crisp-gate[hidden] { display: none !important; }
+    .crisp-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 30;
+      display: grid;
+      place-items: center;
+      padding: 22px;
+      background: rgba(0,0,0,.66);
+    }
+    .crisp-gate-panel {
+      position: relative;
+      width: min(390px, 100%);
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+      padding: 28px;
+      border: 1px solid rgba(255,211,89,.44);
+      color: #ecfaff;
+      background: radial-gradient(circle at 80% 18%, rgba(37,217,248,.12), transparent 38%), linear-gradient(145deg, rgba(13,28,40,.97), rgba(5,13,20,.98));
+      box-shadow: 0 0 26px rgba(255,191,48,.16), 0 20px 60px rgba(0,0,0,.52);
+    }
+    .crisp-gate-close {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      border: 0;
+      color: #ffe483;
+      background: transparent;
+      cursor: pointer;
+      font: 700 28px/1 "Rajdhani", sans-serif;
+    }
+    .crisp-gate-label {
+      color: #25d9f8;
+      font: 700 10px "Space Grotesk", sans-serif;
+      letter-spacing: 2px;
+    }
+    .crisp-gate-panel strong {
+      color: #ffe483;
+      font: 700 31px/1 "Rajdhani", sans-serif;
+      letter-spacing: .5px;
+    }
+    .crisp-gate-panel label {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      color: #9db5bd;
+      font: 700 10px "Space Grotesk", sans-serif;
+      letter-spacing: 1px;
+    }
+    .crisp-gate-panel input {
+      width: 100%;
+      border: 1px solid rgba(37,217,248,.28);
+      color: #ecfaff;
+      background: rgba(2,13,19,.84);
+      outline: none;
+      padding: 13px 12px;
+      font: 600 14px "Space Grotesk", sans-serif;
+    }
+    .crisp-gate-submit {
+      min-height: 44px;
+      margin-top: 4px;
+      border: 1px solid rgba(255,211,89,.66);
+      color: #ffe483;
+      background: rgba(255,190,44,.12);
+      cursor: pointer;
+      font: 700 11px "Space Grotesk", sans-serif;
+      letter-spacing: 1px;
+    }
+    @media (max-width: 800px) {
+      .crisp-launcher {
+        right: 14px;
+        bottom: 14px;
+        min-width: 122px;
+        min-height: 46px;
+      }
+      .crisp-gate-panel { padding: 24px 20px; }
+    }
+  </style>
 </head>
 <body>
     <div class="page-shell">
@@ -437,7 +543,7 @@
       </div>
     </footer>
     <button class="crisp-launcher" type="button">LIVE CHAT</button>
-    <div class="crisp-gate" aria-hidden="true">
+    <div class="crisp-gate" aria-hidden="true" hidden>
       <form class="crisp-gate-panel">
         <button class="crisp-gate-close" type="button" aria-label="Close live chat form">&times;</button>
         <span class="crisp-gate-label">LIVE SUPPORT</span>
