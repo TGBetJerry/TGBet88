@@ -31,6 +31,46 @@ document.addEventListener("keydown", (event) => {
   window.location.href = whatsappUrl(target.dataset.whatsappMessage);
 });
 
+const crispLauncher = document.querySelector(".crisp-launcher");
+const crispGate = document.querySelector(".crisp-gate");
+const crispGatePanel = document.querySelector(".crisp-gate-panel");
+const crispGateClose = document.querySelector(".crisp-gate-close");
+const crispNameInput = document.querySelector("#crisp-customer-name");
+const crispPhoneInput = document.querySelector("#crisp-customer-phone");
+
+function openCrispGate() {
+  crispGate?.classList.add("is-open");
+  crispGate?.setAttribute("aria-hidden", "false");
+  crispNameInput?.focus();
+}
+
+function closeCrispGate() {
+  crispGate?.classList.remove("is-open");
+  crispGate?.setAttribute("aria-hidden", "true");
+}
+
+crispLauncher?.addEventListener("click", openCrispGate);
+crispGateClose?.addEventListener("click", closeCrispGate);
+crispGate?.addEventListener("click", (event) => {
+  if (event.target === crispGate) closeCrispGate();
+});
+
+crispGatePanel?.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const name = crispNameInput?.value.trim();
+  const phone = crispPhoneInput?.value.trim();
+  if (!name || !phone) return;
+
+  window.$crisp = window.$crisp || [];
+  window.$crisp.push(["set", "user:nickname", [name]]);
+  window.$crisp.push(["set", "user:phone", [phone]]);
+  window.$crisp.push(["set", "session:data", [[["Name", name], ["Phone", phone]]]]);
+  window.$crisp.push(["do", "chat:show"]);
+  window.$crisp.push(["do", "chat:open"]);
+  crispLauncher?.classList.add("is-hidden");
+  closeCrispGate();
+});
+
 const platformWhatsappMessages = [
   "i nak mega88 id",
   "i nak pussy88 id",
