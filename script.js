@@ -39,14 +39,18 @@ const crispNameInput = document.querySelector("#crisp-customer-name");
 const crispPhoneInput = document.querySelector("#crisp-customer-phone");
 
 function openCrispGate() {
-  crispGate?.classList.add("is-open");
-  crispGate?.setAttribute("aria-hidden", "false");
+  if (!crispGate) return;
+  crispGate.hidden = false;
+  crispGate.classList.add("is-open");
+  crispGate.setAttribute("aria-hidden", "false");
   crispNameInput?.focus();
 }
 
 function closeCrispGate() {
-  crispGate?.classList.remove("is-open");
-  crispGate?.setAttribute("aria-hidden", "true");
+  if (!crispGate) return;
+  crispGate.classList.remove("is-open");
+  crispGate.setAttribute("aria-hidden", "true");
+  crispGate.hidden = true;
 }
 
 crispLauncher?.addEventListener("click", openCrispGate);
