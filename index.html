@@ -9,6 +9,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script type="text/javascript">
+    window.$crisp = [];
+    window.CRISP_WEBSITE_ID = "943dd137-6461-49b3-836c-fbeb742f540f";
+    window.$crisp.push(["do", "chat:hide"]);
+    (function () {
+      var d = document;
+      var s = d.createElement("script");
+      s.src = "https://client.crisp.chat/l.js";
+      s.async = 1;
+      d.getElementsByTagName("head")[0].appendChild(s);
+    })();
+  </script>
 </head>
 <body>
     <div class="page-shell">
@@ -424,6 +436,23 @@
         <a href="#">SUPPORT</a>
       </div>
     </footer>
+    <button class="crisp-launcher" type="button">LIVE CHAT</button>
+    <div class="crisp-gate" aria-hidden="true">
+      <form class="crisp-gate-panel">
+        <button class="crisp-gate-close" type="button" aria-label="Close live chat form">&times;</button>
+        <span class="crisp-gate-label">LIVE SUPPORT</span>
+        <strong>CONTACT JERRY</strong>
+        <label>
+          <span>Name</span>
+          <input id="crisp-customer-name" name="name" type="text" autocomplete="name" required>
+        </label>
+        <label>
+          <span>Phone number</span>
+          <input id="crisp-customer-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required>
+        </label>
+        <button class="crisp-gate-submit" type="submit">START CHAT</button>
+      </form>
+    </div>
   </div>
 
   <script src="script.js"></script>
